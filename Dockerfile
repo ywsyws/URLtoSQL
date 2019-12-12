@@ -10,8 +10,8 @@ LABEL maintainer="yws <channing.platevoet@gmail.com>" version="1.0"
 # Update Ubuntu Software repository and install Python, pip & git from Ubuntu software repository
 RUN apt-get update -y && \
     apt-get install -y python3 python3-pip python3-dev && \
+    apt-get install -y sudo curl && \
     apt-get install -y git
-    # apt-get install -y sudo curl && \
     # apt-get install -y jupyter
 
 # Configure git account
