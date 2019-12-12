@@ -1,0 +1,8 @@
+### Flask.Python Stack ###
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+### Azure connection configuration file ###
+config.py
