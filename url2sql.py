@@ -1,5 +1,4 @@
 # import libraries
-import pandas as pd
 from functions import parse_url, sqldb_conn, query
 import config
 
@@ -8,11 +7,12 @@ url = 'https://www.yws.com?user_id=11&movie_id=111&comment=asdf'
 url_query = parse_url(url)
 
 # Connect to the Azure SQL database
-server = config.cf['server']
-db = config.cf['db']
-uid = config.cf['uid']
-pwd= config.cf['pwd']
-conn, cursor = sqldb_conn(server, db, uid, pwd)
+driver = config.DRIVER
+server = config.SERVER
+db = config.DB
+uid = config.UID
+pwd= config.PWD
+conn, cursor = sqldb_conn(driver, server, db, uid, pwd)
 
 # Create a new record
 sql_insert = query()

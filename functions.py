@@ -1,6 +1,7 @@
 from urllib import parse
 import pyodbc
 
+
 def parse_url(url):
     """ Parce URL into dictionary for INPUT to Azure SQL server
     """
@@ -9,19 +10,19 @@ def parse_url(url):
     print (url_query)
     return url_query
 
-def sqldb_conn(server, db, uid, pwd):
+
+def sqldb_conn(driver, server, db, uid, pwd):
     """ Establish connection with the Azure SQL database
     """
 
     # Connect to the Azure SQL Database
-    conn = pyodbc.connect('Driver={ODBC Driver 17 for SQL Server};'
-                        'Server=azuresqlorange.database.windows.net;'
-                        'Database=orange_azure;'
-                        'Trusted_Connectoin=yes;'
-                        'UID=orange;'
-                        'PWD=Supermotdepasse!42;')
+    conn = pyodbc.connect(
+            'Driver=%s;Server=%s;Database=%s;Trusted_Connectoin=yes;UID=%s;PWD=%s;' % \
+                (driver, server, db, uid, pwd))
+
     cursor = conn.cursor()
     return conn, cursor
+
 
 def query():
     """ Define INSERT query
