@@ -22,3 +22,12 @@ def sqldb_conn(server, db, uid, pwd):
                         'PWD=Supermotdepasse!42;')
     cursor = conn.cursor()
     return conn, cursor
+
+def query():
+    """ Define INSERT query
+    """
+    query = """
+            INSERT INTO cc_comments (user_id, movie_id, comment)
+            VALUES (?, ?, ?)
+            """
+    return query
