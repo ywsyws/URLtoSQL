@@ -28,20 +28,18 @@ cursor = conn.cursor()
 # MostBestMovieYear = pd.read_sql(query, conn)
 # print(MostBestMovieYear)
 
-# user_id = url_query['user_id']
-# movie_id = url_query['movie_id']
-# comment = url_query['comment']
+user_id = url_query['user_id']
+movie_id = url_query['movie_id']
+comment = url_query['comment']
 
 # Create a new record
 sql_insert = """
             INSERT INTO cc_comments (user_id, movie_id, comment)
-            VALUES (CAST(url_query['user_id'] AS INT), CAST(url_query['movie_id'] AS INT), CAST(url_query['comment'] AS VARCHAR))
+            VALUES (?, ?, ?)
             """
 
-# qStr = "SELECT * FROM [{}]".format(tableName)
-
 # Execute the query and write to Azure DB table
-cursor.execute(sql_insert)
+cursor.execute(sql_insert, user_id, movie_id, comment)
 
  # Commit the connection since it is not autocimmited by default
 conn.commit()
